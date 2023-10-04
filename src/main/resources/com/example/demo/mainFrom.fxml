@@ -64,7 +64,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="logoutBtn" layoutX="16.0" layoutY="561.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="Đăng xuất" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="88.0">
+                              <Button fx:id="logoutBtn" layoutX="16.0" layoutY="561.0" mnemonicParsing="false" onAction="#logout" prefHeight="30.0" prefWidth="110.0" text="Đăng xuất" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="88.0">
                                  <graphic>
                                     <FontAwesomeIcon glyphName="SIGN_OUT" size="1.6rem" />
                                  </graphic>
@@ -234,10 +234,10 @@
                                       <columns>
                                         <TableColumn fx:id="inventory_col_idProduct" prefWidth="95.99999237060547" text="ID_sp" />
                                         <TableColumn fx:id="inventory_col_ProductName" prefWidth="155.20004272460938" text="Ten_sp" />
-                                          <TableColumn fx:id="inventory_col_type" minWidth="5.60003662109375" prefWidth="105.5999755859375" text="Loai" />
+                                          <TableColumn fx:id="inventory_col_type" minWidth="5.60003662109375" prefWidth="105.5999755859375" text="Loai_sp" />
                                           <TableColumn fx:id="inventory_col_stock" prefWidth="105.5999755859375" text="Stock" />
-                                          <TableColumn fx:id="inventory_col_price" prefWidth="107.19998168945312" text="Gia" />
-                                          <TableColumn fx:id="inventory_col_status" prefWidth="123.19989013671875" text="Trạng thái" />
+                                          <TableColumn fx:id="inventory_col_price" prefWidth="107.19998168945312" text="Gia_sp" />
+                                          <TableColumn fx:id="inventory_col_status" prefWidth="123.19989013671875" text="Trangthai_sp" />
                                           <TableColumn fx:id="inventory_col_date" prefWidth="123.19989013671875" text="Date" />
                                       </columns>
                                        <columnResizePolicy>
@@ -258,7 +258,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="131.0" layoutY="26.0" prefHeight="30.0" prefWidth="175.0">
+                                    <TextField fx:id="inventory_IdProduct" layoutX="131.0" layoutY="26.0" prefHeight="30.0" prefWidth="175.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -268,7 +268,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="131.0" layoutY="73.0" prefHeight="30.0" prefWidth="175.0">
+                                    <TextField fx:id="inventory_productName" layoutX="131.0" layoutY="73.0" prefHeight="30.0" prefWidth="175.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -278,13 +278,13 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox layoutX="131.0" layoutY="124.0" prefHeight="30.0" prefWidth="175.0" promptText="Chọn loại sản phẩm" />
+                                    <ComboBox fx:id="inventory_chooseType" layoutX="131.0" layoutY="124.0" prefHeight="30.0" prefWidth="175.0" promptText="Chọn loại sản phẩm" />
                                     <Label layoutX="405.0" layoutY="25.0" text="Stock:">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="482.0" layoutY="23.0" prefHeight="30.0" prefWidth="175.0" promptText="0.0">
+                                    <TextField fx:id="inventory_stock" layoutX="482.0" layoutY="23.0" prefHeight="30.0" prefWidth="175.0" promptText="0.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -294,7 +294,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField layoutX="482.0" layoutY="73.0" prefHeight="30.0" prefWidth="175.0" promptText="\$0.0">
+                                    <TextField fx:id="inventory_price" layoutX="482.0" layoutY="73.0" prefHeight="30.0" prefWidth="175.0" promptText="\$0.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -333,12 +333,12 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Label layoutX="407.0" layoutY="123.0" text="Trạng thái:">
+                                    <Label layoutX="400.0" layoutY="129.0" text="Trạng thái:">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox layoutX="482.0" layoutY="118.0" prefHeight="30.0" prefWidth="175.0" promptText="Trạng thái sản phẩm" />
+                                    <ComboBox fx:id="inventory_status" layoutX="484.0" layoutY="123.0" prefHeight="30.0" prefWidth="175.0" promptText="Trạng thái sản phẩm" />
                                  </children>
                               </AnchorPane>
                               <Separator layoutX="14.0" layoutY="295.0" prefHeight="7.0" prefWidth="868.0" AnchorPane.bottomAnchor="297.8" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="7.600000000000023" />

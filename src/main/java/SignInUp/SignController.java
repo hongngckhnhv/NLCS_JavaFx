@@ -27,6 +27,8 @@ import java.util.regex.Pattern;
 
 import main.data;
 import connect.database;
+import main.MainFormController;
+import main.productData;
 
 public class SignController implements Initializable {
     @FXML
@@ -115,7 +117,6 @@ public class SignController implements Initializable {
     private Alert alert;
 
     //Kt ben form dang nhap
-
     //nut btn ben dang nhap
     public void loginBtn() {
         if(si_user.getText().isEmpty() || si_passwd.getText().isEmpty()) {
