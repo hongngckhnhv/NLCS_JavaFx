@@ -16,9 +16,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
@@ -34,14 +37,29 @@
                            <children>
                               <AnchorPane layoutX="-9.0" prefHeight="116.0" prefWidth="206.0" styleClass="header" stylesheets="@css/MainFrom.css" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label layoutX="5.0" layoutY="47.0" text="Hệ thống quản lý quán coffee " textFill="WHITE">
+                                    <ImageView fitHeight="96.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@image/logok.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label layoutX="96.0" layoutY="6.0" prefHeight="34.0" prefWidth="85.0" text="Hệ thống" textFill="WHITE">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="139.0" layoutY="41.0" prefHeight="34.0" prefWidth="66.0" text="quản lí" textFill="WHITE">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="89.0" layoutY="75.0" prefHeight="34.0" prefWidth="99.0" text="quán coffee" textFill="WHITE">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <Label layoutX="5.0" layoutY="125.0" prefHeight="27.0" prefWidth="202.0" text="Welcome, " textFill="WHITE">
+                              <Label layoutX="5.0" layoutY="136.0" prefHeight="27.0" prefWidth="202.0" text="Welcome, " textFill="WHITE">
                                  <font>
                                     <Font name="Gadugi" size="14.0" />
                                  </font>
@@ -85,7 +103,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Button>
-                              <Label fx:id="username" layoutX="78.0" layoutY="130.0" text="Khanh" textFill="WHITE">
+                              <Label fx:id="username" layoutX="76.0" layoutY="140.0" text="Khanh" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -221,23 +239,23 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="inventoryForm" layoutX="235.0" layoutY="128.0" prefHeight="600.0" prefWidth="889.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="inventoryForm" layoutX="235.0" layoutY="128.0" prefHeight="600.0" prefWidth="889.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="11.0" layoutY="21.0" prefHeight="264.0" prefWidth="866.0" stylesheets="@css/MainFrom.css" AnchorPane.bottomAnchor="315.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="12.200000000000045" AnchorPane.topAnchor="21.0">
+                              <AnchorPane layoutX="11.0" layoutY="21.0" prefHeight="278.0" prefWidth="866.0" stylesheets="@css/MainFrom.css" AnchorPane.bottomAnchor="301.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="21.0">
                                  <styleClass>
                                     <String fx:value="white-bg" />
                                     <String fx:value="shadow" />
                                     <String fx:value="radius" />
                                  </styleClass>
                                  <children>
-                                    <TableView fx:id="inventory_tableView" layoutX="22.0" layoutY="24.0" prefHeight="220.0" prefWidth="818.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="24.0">
+                                    <TableView fx:id="inventory_tableView" layoutX="22.0" layoutY="24.0" onMouseClicked="#inventorySelectData" prefHeight="220.0" prefWidth="818.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="24.0">
                                       <columns>
                                         <TableColumn fx:id="inventory_col_idProduct" prefWidth="95.99999237060547" text="ID_sp" />
                                         <TableColumn fx:id="inventory_col_ProductName" prefWidth="155.20004272460938" text="Ten_sp" />
                                           <TableColumn fx:id="inventory_col_type" minWidth="5.60003662109375" prefWidth="105.5999755859375" text="Loai_sp" />
-                                          <TableColumn fx:id="inventory_col_stock" prefWidth="105.5999755859375" text="Stock" />
+                                          <TableColumn fx:id="inventory_col_stock" prefWidth="105.5999755859375" text="Kho" />
                                           <TableColumn fx:id="inventory_col_price" prefWidth="107.19998168945312" text="Gia_sp" />
-                                          <TableColumn fx:id="inventory_col_status" prefWidth="123.19989013671875" text="Trangthai_sp" />
+                                          <TableColumn fx:id="inventory_col_status" prefWidth="123.19989013671875" text="TrangThai_sp" />
                                           <TableColumn fx:id="inventory_col_date" prefWidth="123.19989013671875" text="Date" />
                                       </columns>
                                        <columnResizePolicy>
@@ -279,7 +297,7 @@
                                        </font>
                                     </Label>
                                     <ComboBox fx:id="inventory_chooseType" layoutX="131.0" layoutY="124.0" prefHeight="30.0" prefWidth="175.0" promptText="Chọn loại sản phẩm" />
-                                    <Label layoutX="405.0" layoutY="25.0" text="Stock:">
+                                    <Label layoutX="405.0" layoutY="25.0" text="Kho:">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -299,7 +317,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <AnchorPane layoutX="672.0" layoutY="10.0" prefHeight="141.0" prefWidth="144.0" stylesheets="@css/MainFrom.css" AnchorPane.rightAnchor="51.0">
+                                    <AnchorPane layoutX="684.0" layoutY="13.0" prefHeight="141.0" prefWidth="144.0" stylesheets="@css/MainFrom.css" AnchorPane.rightAnchor="36.799999999999955">
                                        <styleClass>
                                           <String fx:value="white-bg" />
                                           <String fx:value="shadow" />
@@ -308,27 +326,27 @@
                                           <ImageView fx:id="inventory_imageView" fitHeight="143.0" fitWidth="145.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
                                        </children>
                                     </AnchorPane>
-                                    <Button fx:id="inventory_importBtn" layoutX="711.0" layoutY="194.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Nhập" AnchorPane.rightAnchor="77.0">
+                                    <Button fx:id="inventory_importBtn" layoutX="707.0" layoutY="194.0" mnemonicParsing="false" onAction="#inventoryImportBtn" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Thêm ảnh" AnchorPane.rightAnchor="59.39999999999998">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="inventory_addBtn" layoutX="131.0" layoutY="209.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Thêm" AnchorPane.bottomAnchor="26.99999999999998">
+                                    <Button fx:id="inventory_addBtn" layoutX="120.0" layoutY="208.0" mnemonicParsing="false" onAction="#inventoryAddBtn" prefHeight="30.0" prefWidth="80.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Thêm" AnchorPane.bottomAnchor="27.99999999999997">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="inventory_updateBtn" layoutX="244.0" layoutY="209.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Cập nhật" AnchorPane.bottomAnchor="28.0">
+                                    <Button fx:id="inventory_updateBtn" layoutX="244.0" layoutY="209.0" mnemonicParsing="false" onAction="#inventoryUpdateBtn" prefHeight="30.0" prefWidth="80.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Cập nhật" AnchorPane.bottomAnchor="28.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="inventory_clearBtn" layoutX="369.0" layoutY="208.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Clear" AnchorPane.bottomAnchor="27.99999999999997">
+                                    <Button fx:id="inventory_clearBtn" layoutX="377.0" layoutY="208.0" mnemonicParsing="false" onAction="#inventoryClearBtn" prefHeight="30.0" prefWidth="80.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Làm sạch" AnchorPane.bottomAnchor="27.99999999999997">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-                                    <Button fx:id="inventory_deleteBtn" layoutX="492.0" layoutY="209.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Xóa" AnchorPane.bottomAnchor="26.99999999999997">
+                                    <Button fx:id="inventory_deleteBtn" layoutX="501.0" layoutY="208.0" mnemonicParsing="false" onAction="#inventoryDeleteBtn" prefHeight="30.0" prefWidth="80.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Xóa" AnchorPane.bottomAnchor="27.99999999999997">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -342,6 +360,77 @@
                                  </children>
                               </AnchorPane>
                               <Separator layoutX="14.0" layoutY="295.0" prefHeight="7.0" prefWidth="868.0" AnchorPane.bottomAnchor="297.8" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="7.600000000000023" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="menu_form" layoutX="179.0" layoutY="62.0" prefHeight="600.0" prefWidth="889.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="21.0" layoutY="18.0" prefHeight="566.0" prefWidth="489.0" stylesheets="@css/MainFrom.css" AnchorPane.bottomAnchor="15.600000000000023" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="379.0" AnchorPane.topAnchor="18.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="radius" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <ScrollPane fx:id="menu_scrollPane" layoutX="15.0" layoutY="14.0" prefHeight="538.0" prefWidth="460.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.600000000000023" AnchorPane.topAnchor="14.0">
+                                       <content>
+                                          <GridPane fx:id="menu_gridPane" prefHeight="22.0" prefWidth="116.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="526.0" layoutY="18.0" prefHeight="566.0" prefWidth="342.0" stylesheets="@css/MainFrom.css" AnchorPane.bottomAnchor="15.600000000000023" AnchorPane.rightAnchor="21.200000000000045" AnchorPane.topAnchor="18.0">
+                                 <styleClass>
+                                    <String fx:value="white-bg" />
+                                    <String fx:value="radius" />
+                                    <String fx:value="shadow" />
+                                 </styleClass>
+                                 <children>
+                                    <TableView fx:id="menu_tableView" layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="313.0" AnchorPane.bottomAnchor="302.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.799999999999955" AnchorPane.topAnchor="13.999999999999972">
+                                      <columns>
+                                        <TableColumn fx:id="menu_col_productName" prefWidth="143.20001220703125" text="Ten_sp" />
+                                        <TableColumn fx:id="menu_col_quantity" prefWidth="68.0" text="SoLuong" />
+                                          <TableColumn fx:id="menu_col_price" prefWidth="101.60015869140625" text="Gia ($)" />
+                                      </columns>
+                                    </TableView>
+                                    <Label layoutX="21.0" layoutY="292.0" prefHeight="27.0" prefWidth="70.0" text="Tổng cộng:" AnchorPane.bottomAnchor="246.99999999999997" AnchorPane.leftAnchor="21.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="menu_total" layoutX="108.0" layoutY="281.0" prefHeight="38.0" prefWidth="218.0" text="\$0.0" AnchorPane.bottomAnchor="246.99999999999997" AnchorPane.rightAnchor="20.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="menu_amount" layoutX="108.0" layoutY="333.0" prefHeight="38.0" prefWidth="210.0" promptText="\$0.0" AnchorPane.bottomAnchor="194.99999999999997" AnchorPane.rightAnchor="23.99999999999997">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label fx:id="menu_change" layoutX="104.0" layoutY="387.0" prefHeight="38.0" prefWidth="218.0" text="\$0.0" AnchorPane.bottomAnchor="140.99999999999997" AnchorPane.rightAnchor="19.99999999999997">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="menu_payBtn" layoutX="14.0" layoutY="461.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Thanh toán" AnchorPane.bottomAnchor="74.99999999999997" AnchorPane.leftAnchor="14.0" />
+                                    <Button fx:id="menu_removeBtn" layoutX="125.0" layoutY="461.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Xóa" AnchorPane.bottomAnchor="74.99999999999997" />
+                                    <Button fx:id="menu_receiptBtn" layoutX="236.0" layoutY="461.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Biên lai" AnchorPane.bottomAnchor="74.99999999999997" AnchorPane.rightAnchor="6.399999999999977" />
+                                    <Label layoutX="21.0" layoutY="343.0" prefHeight="27.0" prefWidth="70.0" text="Số tiền:" AnchorPane.bottomAnchor="196.2" AnchorPane.leftAnchor="21.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="21.0" layoutY="392.0" prefHeight="27.0" prefWidth="70.0" text="Change:" AnchorPane.bottomAnchor="147.2" AnchorPane.leftAnchor="21.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </children>
