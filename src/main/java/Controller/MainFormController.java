@@ -1,4 +1,4 @@
-package main;
+package Controller;
 
 import com.example.demo.HelloApplication;
 import javafx.collections.FXCollections;
@@ -26,9 +26,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
 
-import connect.database;
-import product.productData;
-import product.cardProductController;
+import Model.database;
+import View.data;
+import View.productData;
 
 public class MainFormController implements Initializable {
 

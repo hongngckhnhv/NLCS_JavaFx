@@ -1,4 +1,4 @@
-package SignInUp;
+package Controller;
 
 import com.example.demo.HelloApplication;
 import javafx.animation.TranslateTransition;
@@ -25,8 +25,8 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import main.data;
-import connect.database;
+import View.data;
+import Model.database;
 
 public class SignController implements Initializable {
     @FXML

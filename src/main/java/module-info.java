@@ -4,15 +4,14 @@ module com.example.demo {
 
 
     opens com.example.demo to javafx.fxml;
-    opens SignInUp to javafx.fxml;
-    opens main to javafx.fxml;
-    opens product to javafx.fxml;
+    opens Controller to javafx.fxml;
+    opens Model to javafx.fxml;
+    opens View to javafx.fxml;
 
     exports com.example.demo;
-    exports SignInUp;
-    exports main;
-    exports connect;
-    exports product;
+    exports Model;
+    exports Controller;
+    exports View;
 
 
     requires com.rabbitmq.client;

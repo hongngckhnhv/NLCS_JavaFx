@@ -1,4 +1,4 @@
-package product;
+package View;
 
 import java.util.Date;
 

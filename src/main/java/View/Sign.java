@@ -1,4 +1,4 @@
-package SignInUp;
+package View;
 
 import com.example.demo.HelloApplication;
 import javafx.application.Application;
@@ -22,7 +22,7 @@ public class Sign extends Application {
             primaryStage.setTitle("CAFE SHOP MANAGEMENT SYSTEM");
             primaryStage.setScene(scene);
             primaryStage.show();
-//            primaryStage.setResizable(false);
+            primaryStage.setResizable(false);
 //            database db = new database();
 //            db.connectDB();
 
