@@ -6,11 +6,14 @@ module com.example.demo {
     opens com.example.demo to javafx.fxml;
     opens SignInUp to javafx.fxml;
     opens main to javafx.fxml;
+    opens product to javafx.fxml;
 
     exports com.example.demo;
     exports SignInUp;
     exports main;
     exports connect;
+    exports product;
+
 
     requires com.rabbitmq.client;
     requires mysql.connector.j;

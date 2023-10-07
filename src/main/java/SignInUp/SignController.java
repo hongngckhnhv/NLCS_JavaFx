@@ -27,8 +27,6 @@ import java.util.regex.Pattern;
 
 import main.data;
 import connect.database;
-import main.MainFormController;
-import main.productData;
 
 public class SignController implements Initializable {
     @FXML

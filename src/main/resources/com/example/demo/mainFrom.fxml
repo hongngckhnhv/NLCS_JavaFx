@@ -64,7 +64,7 @@
                                     <Font name="Gadugi" size="14.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="dashBoardBtn" layoutX="1.0" layoutY="216.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" styleClass="nav-btn" stylesheets="@css/MainFrom.css" text="Bảng điều khiển" textFill="WHITE">
+                              <Button fx:id="dashBoardBtn" layoutX="1.0" layoutY="216.0" mnemonicParsing="false" onAction="#switchFrom" prefHeight="40.0" prefWidth="210.0" styleClass="nav-btn" stylesheets="@css/MainFrom.css" text="Bảng điều khiển" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -72,7 +72,7 @@
                                     <Insets />
                                  </opaqueInsets>
                               </Button>
-                              <Button fx:id="inventoryBtn" layoutX="1.0" layoutY="266.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" styleClass="nav-btn" stylesheets="@css/MainFrom.css" text="Kho" textFill="WHITE">
+                              <Button fx:id="inventoryBtn" layoutX="1.0" layoutY="266.0" mnemonicParsing="false" onAction="#switchFrom" prefHeight="40.0" prefWidth="210.0" styleClass="nav-btn" stylesheets="@css/MainFrom.css" text="Kho" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -98,7 +98,7 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="menuBtn" layoutX="1.0" layoutY="316.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" styleClass="nav-btn" stylesheets="@css/MainFrom.css" text="Menu" textFill="WHITE">
+                              <Button fx:id="menuBtn" layoutX="1.0" layoutY="316.0" mnemonicParsing="false" onAction="#switchFrom" prefHeight="40.0" prefWidth="210.0" styleClass="nav-btn" stylesheets="@css/MainFrom.css" text="Menu" textFill="WHITE">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
@@ -116,7 +116,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="172.0" layoutY="217.0" prefHeight="609.0" prefWidth="897.0" visible="false" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboard_from" layoutX="172.0" layoutY="217.0" prefHeight="609.0" prefWidth="897.0" visible="false" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="165.0" prefWidth="864.0" stylesheets="@css/MainFrom.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="11.600000000000023" AnchorPane.topAnchor="14.0">
                                  <styleClass>
@@ -160,13 +160,13 @@
                                                 </AnchorPane>
                                                 <AnchorPane layoutX="638.0" layoutY="14.0" prefHeight="128.0" prefWidth="275.0" styleClass="nav-from" stylesheets="@css/MainFrom.css">
                                                    <children>
-                                                      <FontAwesomeIcon fill="WHITE" glyphName="DOLLAR" layoutX="14.0" layoutY="104.0" size="5em" />
+                                                      <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="14.0" layoutY="104.0" size="5em" />
                                                       <Label alignment="CENTER_RIGHT" layoutX="95.0" layoutY="14.0" prefHeight="20.0" prefWidth="133.0" text="\$0.0" textFill="WHITE">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label layoutX="95.0" layoutY="94.0" text="Thu nhập hôm nay" textFill="WHITE">
+                                                      <Label layoutX="126.0" layoutY="94.0" text="Tổng thu nhập" textFill="WHITE">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -393,7 +393,7 @@
                                       <columns>
                                         <TableColumn fx:id="menu_col_productName" prefWidth="143.20001220703125" text="Ten_sp" />
                                         <TableColumn fx:id="menu_col_quantity" prefWidth="68.0" text="SoLuong" />
-                                          <TableColumn fx:id="menu_col_price" prefWidth="101.60015869140625" text="Gia ($)" />
+                                          <TableColumn fx:id="menu_col_price" prefWidth="101.60015869140625" text="Gia (VND)" />
                                       </columns>
                                     </TableView>
                                     <Label layoutX="21.0" layoutY="292.0" prefHeight="27.0" prefWidth="70.0" text="Tổng cộng:" AnchorPane.bottomAnchor="246.99999999999997" AnchorPane.leftAnchor="21.0">
@@ -401,17 +401,17 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="menu_total" layoutX="108.0" layoutY="281.0" prefHeight="38.0" prefWidth="218.0" text="\$0.0" AnchorPane.bottomAnchor="246.99999999999997" AnchorPane.rightAnchor="20.0">
+                                    <Label fx:id="menu_total" layoutX="108.0" layoutY="281.0" prefHeight="38.0" prefWidth="218.0" text="0.0VND" AnchorPane.bottomAnchor="246.99999999999997" AnchorPane.rightAnchor="20.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="menu_amount" layoutX="108.0" layoutY="333.0" prefHeight="38.0" prefWidth="210.0" promptText="\$0.0" AnchorPane.bottomAnchor="194.99999999999997" AnchorPane.rightAnchor="23.99999999999997">
+                                    <TextField fx:id="menu_amount" layoutX="108.0" layoutY="333.0" prefHeight="38.0" prefWidth="210.0" promptText="0.0VND" AnchorPane.bottomAnchor="194.99999999999997" AnchorPane.rightAnchor="23.99999999999997">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </TextField>
-                                    <Label fx:id="menu_change" layoutX="104.0" layoutY="387.0" prefHeight="38.0" prefWidth="218.0" text="\$0.0" AnchorPane.bottomAnchor="140.99999999999997" AnchorPane.rightAnchor="19.99999999999997">
+                                    <Label fx:id="menu_change" layoutX="104.0" layoutY="386.0" prefHeight="38.0" prefWidth="218.0" text="0.0VND" AnchorPane.bottomAnchor="142.0" AnchorPane.rightAnchor="20.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
