@@ -118,13 +118,13 @@ public class MainFormController implements Initializable {
     private Label menu_change;
 
     @FXML
-    private TableColumn<?, ?> menu_col_price;
+    private TableColumn<productData, String> menu_col_price;
 
     @FXML
-    private TableColumn<?, ?> menu_col_productName;
+    private TableColumn<productData, String> menu_col_productName;
 
     @FXML
-    private TableColumn<?, ?> menu_col_quantity;
+    private TableColumn<productData, String> menu_col_quantity;
 
     @FXML
     private AnchorPane menu_form;
@@ -145,7 +145,7 @@ public class MainFormController implements Initializable {
     private ScrollPane menu_scrollPane;
 
     @FXML
-    private TableView<?> menu_tableView;
+    private TableView<productData> menu_tableView;
 
     @FXML
     private Label menu_total;
@@ -478,8 +478,11 @@ public class MainFormController implements Initializable {
                 prod = new productData(resultSet.getInt("id"),
                         resultSet.getString("prod_id"),
                         resultSet.getString("prod_name"),
+                        resultSet.getString("type"),
+                        resultSet.getInt("stock"),
                         resultSet.getDouble("price"),
-                        resultSet.getString("image"));
+                        resultSet.getString("image"),
+                        resultSet.getDate("date"));
                 listData.add(prod);
             }
 
@@ -496,6 +499,7 @@ public class MainFormController implements Initializable {
         int row = 0;
         int column =0;
 
+        menu_gridPane.getChildren().clear();
         menu_gridPane.getRowConstraints().clear();
         menu_gridPane.getColumnConstraints().clear();
 
@@ -521,6 +525,77 @@ public class MainFormController implements Initializable {
         }
     }
 
+    public ObservableList<productData> menuDisplayOrder() {
+        ObservableList<productData>listData = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM customer";
+
+        connection = database.connectDB();
+        try {
+
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            productData prod;
+            while(resultSet.next()) {
+                prod = new productData(resultSet.getInt("id"),
+                        resultSet.getString("prod_id"),
+                        resultSet.getString("prod_name"),
+                        resultSet.getString("type"),
+                        resultSet.getInt("quantity"),
+                        resultSet.getDouble("price"),
+                        resultSet.getString("image"),
+                        resultSet.getDate("date"));
+
+                listData.add(prod);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return listData;
+    }
+
+    // nay la ban nho nho trong menu ke hien thi
+    public ObservableList<productData>menuListData;
+    public void menuShowData(){
+        menuListData = menuDisplayOrder();
+        menu_col_productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
+        menu_col_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        menu_col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        menu_tableView.setItems(cardListData);
+    }
+
+    private int cID;
+    public void customerID(){
+         String sql = "SELECT MAX(customer_id) FROM customer";
+         connection = database.connectDB();
+         try{
+             preparedStatement = connection.prepareStatement(sql);
+             resultSet = preparedStatement.executeQuery();
+
+             if(resultSet.next()){
+                 cID = resultSet.getInt("MAX(customer_id)");
+             }
+             String checkCID = "SELECT MAX(customer_id) FROM receipt";
+             preparedStatement = connection.prepareStatement(checkCID);
+             resultSet = preparedStatement.executeQuery();
+             int checkID =0;
+             if(resultSet.next()){
+                 checkID = resultSet.getInt("MAX(customer_id)");
+             }
+             if(cID == 0) {
+                 cID +=1;
+             }else if(cID == checkID){
+                 cID +=1;
+             }
+             data.cID = cID;
+
+
+         }catch (Exception e) {
+             e.printStackTrace();
+         }
+    }
+
     //cac switch chuyen from
     public void switchFrom (ActionEvent event){
         if(event.getSource() == dashBoardBtn){
@@ -541,6 +616,7 @@ public class MainFormController implements Initializable {
             menu_form.setVisible(true);
 
             menuDisplayCard();
+            menuDisplayOrder();
         }
     }
 
@@ -582,5 +658,6 @@ public class MainFormController implements Initializable {
         inventoryShowData();
 
         menuDisplayCard();
+        menuDisplayOrder();
     }
 }
