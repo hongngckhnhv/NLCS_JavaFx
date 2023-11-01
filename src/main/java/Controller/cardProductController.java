@@ -174,6 +174,9 @@ public class cardProductController implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Thêm thành công");
                     alert.showAndWait();
+
+                    mFrom.menuGetTotal();
+
                 }
 
 

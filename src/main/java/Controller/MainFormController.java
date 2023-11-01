@@ -525,7 +525,7 @@ public class MainFormController implements Initializable {
         }
     }
 
-    public ObservableList<productData> menuDisplayOrder() {
+    public ObservableList<productData> menuGetOrder() {
         ObservableList<productData>listData = FXCollections.observableArrayList();
         String sql = "SELECT * FROM customer";
 
@@ -554,16 +554,138 @@ public class MainFormController implements Initializable {
         return listData;
     }
 
-    // nay la ban nho nho trong menu ke hien thi
-    public ObservableList<productData>menuListData;
-    public void menuShowData(){
-        menuListData = menuDisplayOrder();
+    //Hien thi cai bang menu da chon
+    private ObservableList<productData> menuOrderListData;
+    public void  menuShowOrderData() {
+        menuOrderListData = menuGetOrder();
+
         menu_col_productName.setCellValueFactory(new PropertyValueFactory<>("productName"));
         menu_col_quantity.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         menu_col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        menu_tableView.setItems(cardListData);
+        menu_tableView.setItems(menuOrderListData);
     }
+
+    // nay la ban nho nho trong menu ke hien thi tong tien do do
+    private double totalP ;
+    //Lay gia tien cua san pham
+    public void menuGetTotal(){
+        //Lay cot price trong csdl -> Tinh tong tien hang
+        customerID();
+        String total = "SELECT SUM(price) FROM customer WHERE customer_id = " + cID;
+        connection = database.connectDB();
+
+        try {
+            preparedStatement = connection.prepareStatement(total);
+            resultSet = preparedStatement.executeQuery();
+
+            //hang gia tien
+            if (resultSet.next()) {
+                totalP = resultSet.getDouble("SUM(price)");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    //hien thi menu nho ben menu
+    public void menuDisplayTotal() {
+        menuGetTotal();
+        menu_total.setText(totalP + "00VND");
+    }
+
+    //gan on Action cho no
+    private double amount;
+    private double change;
+    public void menuAmount() {
+        menuGetTotal();
+        if (menu_amount.getText().isEmpty() || totalP == 0) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Invalid =)) ");
+            alert.showAndWait();
+        }else{
+            amount = Double.parseDouble(menu_amount.getText());
+            if (amount < totalP){
+                menu_amount.setText("");
+            }else{
+                change = (amount - totalP);
+                menu_change.setText(change + "00VND");
+            }
+        }
+    }
+
+    //button 99thanh toan
+    public  void menuPayBtn(){
+        if (totalP == 0) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng chọn đơn hàng của bạn trước");
+            alert.showAndWait();
+        }else{
+            menuGetTotal();
+            String insertPay = "INSERT INTO receipt (customer_id, total, date, em_username)"
+                    + "VALUE (?,?,?,?)";
+            connection = database.connectDB();
+
+            try{
+
+                if (amount == 0) {
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Opps! Lỗi rồi!");
+                    alert.showAndWait();
+                }else{
+                    alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    alert.setTitle("Confirmation message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Bạn chắc chưa?");
+                    Optional<ButtonType> option = alert.showAndWait();
+
+                    if(option.get().equals(ButtonType.OK)) {
+                        customerID();
+                        menuGetTotal();
+                        preparedStatement = connection.prepareStatement(insertPay);
+                        preparedStatement.setString(1, String.valueOf(cID));
+                        preparedStatement.setString(2, String.valueOf(totalP));
+
+                        Date date = new Date();
+                        java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+                        preparedStatement.setString(3, String.valueOf(sqlDate));
+                        preparedStatement.setString(4, data.username);
+
+                        preparedStatement.executeUpdate();
+
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Information Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Thành công!!!");
+                        alert.showAndWait();
+
+                        menuShowOrderData();
+                    }else{
+                        alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Information Message");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Hủy bỏ? ");
+                        alert.showAndWait();
+
+                    }
+
+                }
+
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
 
     private int cID;
     public void customerID(){
@@ -616,7 +738,8 @@ public class MainFormController implements Initializable {
             menu_form.setVisible(true);
 
             menuDisplayCard();
-            menuDisplayOrder();
+            menuDisplayTotal();
+            menuShowOrderData();
         }
     }
 
@@ -658,6 +781,8 @@ public class MainFormController implements Initializable {
         inventoryShowData();
 
         menuDisplayCard();
-        menuDisplayOrder();
+        menuGetOrder();
+        menuDisplayTotal();
+        menuShowOrderData();
     }
 }
