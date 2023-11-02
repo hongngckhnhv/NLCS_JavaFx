@@ -171,12 +171,12 @@ public class MainFormController implements Initializable {
     //Them san pham
     public void inventoryAddBtn() {
         if(inventory_IdProduct.getText().isEmpty()
-            || inventory_productName.getText().isEmpty()
-            || inventory_chooseType.getSelectionModel().getSelectedItem() == null
-            || inventory_stock.getText().isEmpty()
-            || inventory_price.getText().isEmpty()
-            || inventory_status.getSelectionModel().getSelectedItem() == null
-            || data.path == null){
+                || inventory_productName.getText().isEmpty()
+                || inventory_chooseType.getSelectionModel().getSelectedItem() == null
+                || inventory_stock.getText().isEmpty()
+                || inventory_price.getText().isEmpty()
+                || inventory_status.getSelectionModel().getSelectedItem() == null
+                || data.path == null){
 
             alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Message");
@@ -186,7 +186,7 @@ public class MainFormController implements Initializable {
         }else{
             //Check id cua san pham coi no co bi trung hay khong
             String checkProdID = "SELECT prod_id FROM product WHERE prod_id = '"
-             + inventory_IdProduct.getText() + "'";
+                    + inventory_IdProduct.getText() + "'";
 
             connection = database.connectDB();
             try{
@@ -526,8 +526,9 @@ public class MainFormController implements Initializable {
     }
 
     public ObservableList<productData> menuGetOrder() {
+        customerID();
         ObservableList<productData>listData = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM customer";
+        String sql = "SELECT * FROM customer WHERE customer_id = "+ cID;
 
         connection = database.connectDB();
         try {
@@ -564,6 +565,18 @@ public class MainFormController implements Initializable {
         menu_col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         menu_tableView.setItems(menuOrderListData);
+    }
+
+    // gan menuSelectedOrder ben On mouse clicked -> cho phép liên kết một sự kiện với một phương thức xử lý xự kiện
+    private int getid;
+    public void menuSelectOrder(){
+        productData prod = menu_tableView.getSelectionModel().getSelectedItem();
+        int num = menu_tableView.getSelectionModel().getSelectedIndex();
+
+        if((num - 1) < -1) return;
+        //Lay id đặt hàng trước
+        getid = prod.getId();
+
     }
 
     // nay la ban nho nho trong menu ke hien thi tong tien do do
@@ -668,6 +681,7 @@ public class MainFormController implements Initializable {
                         alert.showAndWait();
 
                         menuShowOrderData();
+                        menuRestart();
                     }else{
                         alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("Information Message");
@@ -686,36 +700,76 @@ public class MainFormController implements Initializable {
         }
     }
 
+    public void menuRemoveBtn(){
+        if (getid ==0 ) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Chọn sản phẩm mà bạn muốn xóa ! ");
+            alert.showAndWait();
+        }else{
+            String deleteData = "DELETE FROM customer WHERE id =" +getid;
+            connection = database.connectDB();
+            try{
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confirmation Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Bạn có chắc chắn xóa sản phẩm này?");
+                Optional<ButtonType> option = alert.showAndWait();
+
+                if (option.get().equals(ButtonType.OK)) {
+                    preparedStatement = connection.prepareStatement(deleteData);
+                    preparedStatement.executeUpdate();
+
+                }
+
+
+                menuShowOrderData();
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void menuRestart() {
+        totalP = 0;
+        change = 0;
+        amount = 0;
+        menu_total.setText("");
+        menu_amount.setText("");
+        menu_change.setText("");
+
+    }
 
     private int cID;
     public void customerID(){
-         String sql = "SELECT MAX(customer_id) FROM customer";
-         connection = database.connectDB();
-         try{
-             preparedStatement = connection.prepareStatement(sql);
-             resultSet = preparedStatement.executeQuery();
+        String sql = "SELECT MAX(customer_id) FROM customer";
+        connection = database.connectDB();
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
 
-             if(resultSet.next()){
-                 cID = resultSet.getInt("MAX(customer_id)");
-             }
-             String checkCID = "SELECT MAX(customer_id) FROM receipt";
-             preparedStatement = connection.prepareStatement(checkCID);
-             resultSet = preparedStatement.executeQuery();
-             int checkID =0;
-             if(resultSet.next()){
-                 checkID = resultSet.getInt("MAX(customer_id)");
-             }
-             if(cID == 0) {
-                 cID +=1;
-             }else if(cID == checkID){
-                 cID +=1;
-             }
-             data.cID = cID;
+            if(resultSet.next()){
+                cID = resultSet.getInt("MAX(customer_id)");
+            }
+            String checkCID = "SELECT MAX(customer_id) FROM receipt";
+            preparedStatement = connection.prepareStatement(checkCID);
+            resultSet = preparedStatement.executeQuery();
+            int checkID =0;
+            if(resultSet.next()){
+                checkID = resultSet.getInt("MAX(customer_id)");
+            }
+            if(cID == 0) {
+                cID +=1;
+            }else if(cID == checkID){
+                cID +=1;
+            }
+            data.cID = cID;
 
 
-         }catch (Exception e) {
-             e.printStackTrace();
-         }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //cac switch chuyen from

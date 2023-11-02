@@ -209,12 +209,12 @@
                                        </styleClass>
                                        <children>
                                           <AreaChart layoutX="-19.0" layoutY="-34.0" prefHeight="366.0" prefWidth="408.0" title="Biểu dồ thu thập" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <xAxis>
-                                              <CategoryAxis side="BOTTOM" />
-                                            </xAxis>
-                                            <yAxis>
-                                              <NumberAxis side="LEFT" />
-                                            </yAxis>
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
                                           </AreaChart>
                                        </children>
                                     </AnchorPane>
@@ -226,12 +226,12 @@
                                        </styleClass>
                                        <children>
                                           <BarChart layoutX="-127.0" layoutY="-34.0" prefHeight="366.4" prefWidth="373.6" title="Biều đồ khách hàng" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <xAxis>
-                                              <CategoryAxis side="BOTTOM" />
-                                            </xAxis>
-                                            <yAxis>
-                                              <NumberAxis side="LEFT" />
-                                            </yAxis>
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
                                           </BarChart>
                                        </children>
                                     </AnchorPane>
@@ -249,15 +249,15 @@
                                  </styleClass>
                                  <children>
                                     <TableView fx:id="inventory_tableView" layoutX="22.0" layoutY="24.0" onMouseClicked="#inventorySelectData" prefHeight="220.0" prefWidth="818.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="24.0">
-                                      <columns>
-                                        <TableColumn fx:id="inventory_col_idProduct" prefWidth="95.99999237060547" text="ID_sp" />
-                                        <TableColumn fx:id="inventory_col_ProductName" prefWidth="155.20004272460938" text="Ten_sp" />
+                                       <columns>
+                                          <TableColumn fx:id="inventory_col_idProduct" prefWidth="95.99999237060547" text="ID_sp" />
+                                          <TableColumn fx:id="inventory_col_ProductName" prefWidth="155.20004272460938" text="Ten_sp" />
                                           <TableColumn fx:id="inventory_col_type" minWidth="5.60003662109375" prefWidth="105.5999755859375" text="Loai_sp" />
                                           <TableColumn fx:id="inventory_col_stock" prefWidth="105.5999755859375" text="Kho" />
                                           <TableColumn fx:id="inventory_col_price" prefWidth="107.19998168945312" text="Gia_sp" />
                                           <TableColumn fx:id="inventory_col_status" prefWidth="123.19989013671875" text="TrangThai_sp" />
                                           <TableColumn fx:id="inventory_col_date" prefWidth="123.19989013671875" text="Date" />
-                                      </columns>
+                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                        </columnResizePolicy>
@@ -374,9 +374,9 @@
                                     <ScrollPane fx:id="menu_scrollPane" layoutX="15.0" layoutY="14.0" prefHeight="538.0" prefWidth="460.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.600000000000023" AnchorPane.topAnchor="14.0">
                                        <content>
                                           <GridPane fx:id="menu_gridPane" prefHeight="22.0" prefWidth="116.0">
-                                            <columnConstraints>
-                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
                                           </GridPane>
                                        </content>
                                     </ScrollPane>
@@ -389,24 +389,24 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                                  <children>
-                                    <TableView fx:id="menu_tableView" layoutX="14.0" layoutY="14.0" prefHeight="250.0" prefWidth="313.0" AnchorPane.bottomAnchor="302.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.799999999999955" AnchorPane.topAnchor="13.999999999999972">
-                                      <columns>
-                                        <TableColumn fx:id="menu_col_productName" prefWidth="143.20001220703125" text="Ten_sp" />
-                                        <TableColumn fx:id="menu_col_quantity" prefWidth="68.0" text="SoLuong" />
+                                    <TableView fx:id="menu_tableView" layoutX="14.0" layoutY="14.0" onMouseClicked="#menuSelectOrder" prefHeight="250.0" prefWidth="313.0" AnchorPane.bottomAnchor="302.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.799999999999955" AnchorPane.topAnchor="13.999999999999972">
+                                       <columns>
+                                          <TableColumn fx:id="menu_col_productName" prefWidth="143.20001220703125" text="Ten_sp" />
+                                          <TableColumn fx:id="menu_col_quantity" prefWidth="68.0" text="SoLuong" />
                                           <TableColumn fx:id="menu_col_price" prefWidth="101.60015869140625" text="Gia (VND)" />
-                                      </columns>
+                                       </columns>
                                     </TableView>
-                                    <Label layoutX="21.0" layoutY="292.0" prefHeight="27.0" prefWidth="70.0" text="Total:" AnchorPane.bottomAnchor="246.99999999999997" AnchorPane.leftAnchor="21.0">
+                                    <Label layoutX="21.0" layoutY="292.0" prefHeight="27.0" prefWidth="70.0" text="Tổng cộng:" AnchorPane.bottomAnchor="246.99999999999997" AnchorPane.leftAnchor="21.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="menu_total" layoutX="108.0" layoutY="281.0" prefHeight="38.0" prefWidth="218.0" text="0.0VND" AnchorPane.bottomAnchor="246.99999999999997" AnchorPane.rightAnchor="20.0">
+                                    <Label fx:id="menu_total" layoutX="104.0" layoutY="286.0" prefHeight="38.0" prefWidth="218.0" text="0.0VND" AnchorPane.bottomAnchor="242.0" AnchorPane.rightAnchor="20.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="menu_amount" layoutX="108.0" layoutY="333.0" onAction="#menuAmount" prefHeight="38.0" prefWidth="210.0" AnchorPane.bottomAnchor="194.99999999999997" AnchorPane.rightAnchor="23.99999999999997">
+                                    <TextField fx:id="menu_amount" layoutX="108.0" layoutY="333.0" onAction="#menuAmount" prefHeight="38.0" prefWidth="170.0" AnchorPane.bottomAnchor="195.0" AnchorPane.rightAnchor="24.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -417,14 +417,14 @@
                                        </font>
                                     </Label>
                                     <Button fx:id="menu_payBtn" layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#menuPayBtn" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Thanh toán" AnchorPane.bottomAnchor="74.99999999999997" AnchorPane.leftAnchor="14.0" />
-                                    <Button fx:id="menu_removeBtn" layoutX="125.0" layoutY="461.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Xóa" AnchorPane.bottomAnchor="74.99999999999997" />
+                                    <Button fx:id="menu_removeBtn" layoutX="125.0" layoutY="461.0" mnemonicParsing="false" onAction="#menuRemoveBtn" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Xóa" AnchorPane.bottomAnchor="74.99999999999997" />
                                     <Button fx:id="menu_receiptBtn" layoutX="236.0" layoutY="461.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Biên lai" AnchorPane.bottomAnchor="74.99999999999997" AnchorPane.rightAnchor="6.399999999999977" />
-                                    <Label layoutX="21.0" layoutY="343.0" prefHeight="27.0" prefWidth="70.0" text="Amount:" AnchorPane.bottomAnchor="196.2" AnchorPane.leftAnchor="21.0">
+                                    <Label layoutX="21.0" layoutY="343.0" prefHeight="27.0" prefWidth="105.0" text="Tiền khách đưa:" AnchorPane.bottomAnchor="196.0" AnchorPane.leftAnchor="21.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="21.0" layoutY="392.0" prefHeight="27.0" prefWidth="70.0" text="Change:" AnchorPane.bottomAnchor="147.2" AnchorPane.leftAnchor="21.0">
+                                    <Label layoutX="21.0" layoutY="392.0" prefHeight="27.0" prefWidth="70.0" text="Thối lại:" AnchorPane.bottomAnchor="147.2" AnchorPane.leftAnchor="21.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
