@@ -17,5 +17,6 @@ module com.example.demo {
     requires com.rabbitmq.client;
     requires mysql.connector.j;
     requires com.oracle.database.jdbc;
+    requires jasperreports;
     requires java.sql;
 }

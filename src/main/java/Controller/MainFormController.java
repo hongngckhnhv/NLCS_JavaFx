@@ -29,6 +29,14 @@ import java.util.*;
 import Model.database;
 import View.data;
 import View.productData;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.engine.xml.JasperPrintFactory;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class MainFormController implements Initializable {
 
@@ -681,7 +689,6 @@ public class MainFormController implements Initializable {
                         alert.showAndWait();
 
                         menuShowOrderData();
-                        menuRestart();
                     }else{
                         alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("Information Message");
@@ -725,6 +732,30 @@ public class MainFormController implements Initializable {
 
 
                 menuShowOrderData();
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void menuReceiptBtn(){
+        if(totalP ==0 || menu_amount.getText().isEmpty()) {
+            alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Message");
+            alert.setContentText("Please order first");
+            alert.showAndWait();
+        }else{
+            HashMap map = new HashMap();
+            map.put("getReceipt", (cID-1));
+
+            try {
+                JasperDesign jDesign = JRXmlLoader.load("D:\\JavaFX\\NLCS_JavaFx\\src\\main\\resources\\com\\example\\demo\\report.jrxml");
+                JasperReport jReport = JasperCompileManager.compileReport(jDesign);
+                JasperPrint jPrint = JasperFillManager.fillReport(jReport, map, connection);
+
+                JasperViewer.viewReport(jPrint, false);
+
+                menuRestart();
             }catch (Exception e) {
                 e.printStackTrace();
             }

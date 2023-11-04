@@ -418,7 +418,7 @@
                                     </Label>
                                     <Button fx:id="menu_payBtn" layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#menuPayBtn" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Thanh toán" AnchorPane.bottomAnchor="74.99999999999997" AnchorPane.leftAnchor="14.0" />
                                     <Button fx:id="menu_removeBtn" layoutX="125.0" layoutY="461.0" mnemonicParsing="false" onAction="#menuRemoveBtn" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Xóa" AnchorPane.bottomAnchor="74.99999999999997" />
-                                    <Button fx:id="menu_receiptBtn" layoutX="236.0" layoutY="461.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Biên lai" AnchorPane.bottomAnchor="74.99999999999997" AnchorPane.rightAnchor="6.399999999999977" />
+                                    <Button fx:id="menu_receiptBtn" layoutX="236.0" layoutY="461.0" mnemonicParsing="false" onAction="#menuReceiptBtn" prefHeight="30.0" prefWidth="100.0" styleClass="btn" stylesheets="@css/MainFrom.css" text="Biên lai" AnchorPane.bottomAnchor="74.99999999999997" AnchorPane.rightAnchor="6.399999999999977" />
                                     <Label layoutX="21.0" layoutY="343.0" prefHeight="27.0" prefWidth="105.0" text="Tiền khách đưa:" AnchorPane.bottomAnchor="196.0" AnchorPane.leftAnchor="21.0">
                                        <font>
                                           <Font size="14.0" />
