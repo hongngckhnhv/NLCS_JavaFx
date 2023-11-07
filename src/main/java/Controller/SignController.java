@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import View.data;
+import Model.data;
 import Model.database;
 
 public class SignController implements Initializable {

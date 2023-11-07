@@ -6,9 +6,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import View.productData;
+import Model.productData;
 
-import java.net.ProtocolException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +16,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import Model.database;
-import View.data;
+import Model.data;
 public class cardProductController implements Initializable {
     @FXML
     private AnchorPane card_Form;

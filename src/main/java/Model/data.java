@@ -1,4 +1,4 @@
-package View;
+package Model;
 
 public class data {
     public static String username;
