@@ -46,7 +46,7 @@
             </HBox>
             <AnchorPane prefHeight="131.0" prefWidth="245.0">
                <children>
-                  <ImageView fx:id="prod_imageView" fitHeight="136.0" fitWidth="206.0" layoutX="22.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="prod_imageView" fitHeight="136.0" fitWidth="206.0" layoutX="14.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
